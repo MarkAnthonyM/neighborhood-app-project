@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/MarkAnthonyM/neighborhood-app-project/precache-manifest.7b50eaaa7068870fd3ba68cbd13453e4.js"
+  "/neighborhood-app-project/precache-manifest.ffb58efc96c6c031dd4d630971ced779.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/MarkAnthonyM/neighborhood-app-project/index.html", {
+workbox.routing.registerNavigationRoute("/neighborhood-app-project/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

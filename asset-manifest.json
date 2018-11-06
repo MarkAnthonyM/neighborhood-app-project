@@ -1,13 +1,13 @@
 {
-  "main.css": "/MarkAnthonyM/neighborhood-app-project/static/css/main.bebfdb94.chunk.css",
-  "main.js": "/MarkAnthonyM/neighborhood-app-project/static/js/main.c8294242.chunk.js",
-  "main.js.map": "/MarkAnthonyM/neighborhood-app-project/static/js/main.c8294242.chunk.js.map",
-  "static/js/1.3d86d212.chunk.js": "/MarkAnthonyM/neighborhood-app-project/static/js/1.3d86d212.chunk.js",
-  "static/js/1.3d86d212.chunk.js.map": "/MarkAnthonyM/neighborhood-app-project/static/js/1.3d86d212.chunk.js.map",
-  "runtime~main.js": "/MarkAnthonyM/neighborhood-app-project/static/js/runtime~main.e59cddca.js",
-  "runtime~main.js.map": "/MarkAnthonyM/neighborhood-app-project/static/js/runtime~main.e59cddca.js.map",
-  "static/css/main.bebfdb94.chunk.css.map": "/MarkAnthonyM/neighborhood-app-project/static/css/main.bebfdb94.chunk.css.map",
-  "index.html": "/MarkAnthonyM/neighborhood-app-project/index.html",
-  "precache-manifest.7b50eaaa7068870fd3ba68cbd13453e4.js": "/MarkAnthonyM/neighborhood-app-project/precache-manifest.7b50eaaa7068870fd3ba68cbd13453e4.js",
-  "service-worker.js": "/MarkAnthonyM/neighborhood-app-project/service-worker.js"
+  "main.css": "/neighborhood-app-project/static/css/main.23422481.chunk.css",
+  "main.js": "/neighborhood-app-project/static/js/main.e7e633e9.chunk.js",
+  "main.js.map": "/neighborhood-app-project/static/js/main.e7e633e9.chunk.js.map",
+  "static/js/1.2f49bc35.chunk.js": "/neighborhood-app-project/static/js/1.2f49bc35.chunk.js",
+  "static/js/1.2f49bc35.chunk.js.map": "/neighborhood-app-project/static/js/1.2f49bc35.chunk.js.map",
+  "runtime~main.js": "/neighborhood-app-project/static/js/runtime~main.ff919053.js",
+  "runtime~main.js.map": "/neighborhood-app-project/static/js/runtime~main.ff919053.js.map",
+  "static/css/main.23422481.chunk.css.map": "/neighborhood-app-project/static/css/main.23422481.chunk.css.map",
+  "index.html": "/neighborhood-app-project/index.html",
+  "precache-manifest.ffb58efc96c6c031dd4d630971ced779.js": "/neighborhood-app-project/precache-manifest.ffb58efc96c6c031dd4d630971ced779.js",
+  "service-worker.js": "/neighborhood-app-project/service-worker.js"
 }
