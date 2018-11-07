@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NeighborhoodMap from './Components/NeighborhoodMap'
-import { load_google_maps } from './Util/MapLoader'
+import { load_google_maps, loadMarkerPlaces } from './Util/MapLoader'
 import './App.css';
 
 class App extends Component {
@@ -9,14 +9,18 @@ class App extends Component {
     loading: true
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let mapPromise = load_google_maps()
+    let markerPromise = loadMarkerPlaces();
 
     Promise.all([
-      mapPromise
+      mapPromise,
+      markerPromise
     ])
     .then(response => {
+      console.log(response[1])
       this.googleObject = response[0].maps
+      this.venues = response[1].response.venues
       this.setState({
         loading: false
       })
@@ -31,6 +35,7 @@ class App extends Component {
         <NeighborhoodMap
         loading={this.state.loading}
         googleObject={this.googleObject}
+        venues={this.venues}
         />
       </div>
     );
