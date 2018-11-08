@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class NeighborhoodMap extends Component {
+  //populates marker infowindow with varies details about venue
   setInfoWindow = (marker, infowindow) => {
     const { googleObject } = this.props
     //Checks maker for already opened infowindow
@@ -12,11 +13,17 @@ class NeighborhoodMap extends Component {
         infowindow.marker = null
       })
 
+      let venueDetail = this.loadVenueDetails(marker)
+      Promise.all([
+        venueDetail
+      ]).then(response => {
+        this.venueDetails = response[0].response.venue
+      })
+
       let streetViewService = new this.props.googleObject.StreetViewService()
       let radius = 50
 
       function getStreetView(data, status) {
-        let panorama
         if (status === googleObject.StreetViewStatus.OK) {
           let nearStreetView = data.location.latLng
           let heading = googleObject.geometry.spherical.computeHeading(
@@ -24,9 +31,10 @@ class NeighborhoodMap extends Component {
           )
           infowindow.setContent(
             `
+            <h2>${marker.title}</h2>
             <div id='pano'></div>
-            <h2>Restuarant Name: ${marker.title}</h2>
             <p>Address: ${marker.location.formattedAddress[0]}, ${marker.location.formattedAddress[1]}</p>
+            <p>Rating: ${venueDetail.rating}</p>
             `
           )
           let panoramaOptions = {
@@ -36,7 +44,7 @@ class NeighborhoodMap extends Component {
               pitch: 30
             }
           }
-          panorama = new googleObject.StreetViewPanorama(
+          let panorama = new googleObject.StreetViewPanorama(
             document.getElementById('pano'), panoramaOptions
           )
         } else {
@@ -48,6 +56,17 @@ class NeighborhoodMap extends Component {
 
       infowindow.open(this.map, marker)
     }
+  }
+
+  loadVenueDetails(marker) {
+    const clientId = 'ZWXMUFVA3FFI0ETOBLYUYUV0LM0DCHLXHYIKAAXKNYAVNFA3'
+    const clientSecrect = 'Y0VDEZ5GP0BKEACCGOIFCTP2ULKVLA3KQF42RKZZ5YQ5MVT5'
+
+    let apiLink = `https://api.foursquare.com/v2/venues/${marker.id}?client_id=${clientId}&client_secret=${clientSecrect}&v=20181025`
+
+    return fetch(apiLink).then(response => {
+      return response.json()
+    }).catch(error => console.log(error))
   }
 
   componentDidUpdate() {

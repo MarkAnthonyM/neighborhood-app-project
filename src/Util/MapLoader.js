@@ -17,7 +17,7 @@ export function load_google_maps() {
   });
 }
 
-//Loads default set of marker information to be used
+//Loads default set of venues to be used
 export function loadMarkerPlaces() {
   let searchQuery = 'restuarant'
   let nearParam = 'Dallas, TX'
