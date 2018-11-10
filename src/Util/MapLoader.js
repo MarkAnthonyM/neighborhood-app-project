@@ -30,3 +30,15 @@ export function loadMarkerPlaces() {
     return response.json()
   }).catch(error => {console.log(error)})
 }
+
+//loads various details about venues
+export function loadVenueDetails(marker) {
+  const clientId = 'ZWXMUFVA3FFI0ETOBLYUYUV0LM0DCHLXHYIKAAXKNYAVNFA3'
+  const clientSecrect = 'Y0VDEZ5GP0BKEACCGOIFCTP2ULKVLA3KQF42RKZZ5YQ5MVT5'
+
+  let apiLink = `https://api.foursquare.com/v2/venues/${marker.id}?client_id=${clientId}&client_secret=${clientSecrect}&v=20181025`
+
+  return fetch(apiLink).then(response => {
+    return response.json()
+  }).catch(error => console.log(error))
+}
