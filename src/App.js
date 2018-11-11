@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { load_google_maps, loadMarkerPlaces } from './Util/MapLoader'
+import NavMenu from './Components/nav-menu'
 import './App.css';
 
 class App extends Component {
@@ -158,15 +159,24 @@ class App extends Component {
     }
   }
 
+  updateQuery = (query) => {
+    this.setState({
+      query: query
+    })
+  }
+
   checkClass() {
     console.log(this)
   }
 
   render() {
-    this.checkClass()
     return (
       <div className="App">
         <h1>Hello World!</h1>
+        <NavMenu
+          query={this.state.query}
+          updateQuery={this.updateQuery}
+        />
         <div id="map"></div>
       </div>
     );
