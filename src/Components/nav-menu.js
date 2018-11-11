@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 
 class navMenu extends Component {
-  state = {
-    query: ''
-  }
-
   render() {
-    const { updateQuery, query } = this.props
+    const { filterMarkers, query } = this.props
 
     return (
       <div>
@@ -16,7 +12,7 @@ class navMenu extends Component {
           type='text'
           placeholder='Filter By Name'
           value={query}
-          onChange={(event) => updateQuery(event.target.value)}
+          onChange={(event) => filterMarkers(event.target.value)}
         />
       </div>
     )

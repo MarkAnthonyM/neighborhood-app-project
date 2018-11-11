@@ -113,7 +113,6 @@ class App extends Component {
       Promise.all([
         venueDetail
       ]).then(response => {
-        console.log(response[0].response.venue)
         this.venueDetails = response[0].response.venue
       })
 
@@ -145,7 +144,7 @@ class App extends Component {
               pitch: 30
             }
           }
-          let panorama = new googleObject.StreetViewPanorama(
+          new googleObject.StreetViewPanorama(
             document.getElementById('pano'), panoramaOptions
           )
         } else {
@@ -159,14 +158,24 @@ class App extends Component {
     }
   }
 
-  updateQuery = (query) => {
+  //updates the query state
+  updateQuery(query) {
     this.setState({
       query: query
     })
   }
 
-  checkClass() {
-    console.log(this)
+  //filters out makers based string in query state
+  filterMarkers = (query) => {
+    this.venueMarkers.forEach(marker => {
+      if (marker.title.toLowerCase().includes(query.toLowerCase())) {
+        marker.setVisible(true)
+      } else {
+        marker.setVisible(false)
+      }
+    })
+
+    this.updateQuery(query)
   }
 
   render() {
@@ -175,7 +184,7 @@ class App extends Component {
         <h1>Hello World!</h1>
         <NavMenu
           query={this.state.query}
-          updateQuery={this.updateQuery}
+          filterMarkers={this.filterMarkers}
         />
         <div id="map"></div>
       </div>
