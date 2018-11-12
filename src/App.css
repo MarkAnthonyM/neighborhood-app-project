@@ -6,14 +6,6 @@ li {
   padding: 5px;
 }
 
-h1 {
-  background-color: skyblue;
-  width: 100%;
-  margin: 0px;
-  padding: 10px 0px 10px 0px;
-  z-index: 2;
-}
-
 img {
   height: 50px;
   align-self: center;
@@ -54,6 +46,14 @@ ul {
 .header {
   background-color: skyblue;
   display: flex;
+}
+
+.header-title {
+  background-color: skyblue;
+  width: 100%;
+  margin: 0px;
+  padding: 10px 0px 10px 0px;
+  z-index: 2;
 }
 
 .nav-bar {

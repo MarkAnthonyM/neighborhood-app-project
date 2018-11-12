@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 class LoadApp extends Component {
   state = {
-    show: false,
-    timeout: null
+    timeout: null,
+    failed: false
   }
 
   componentWillMount(){
@@ -11,22 +11,26 @@ class LoadApp extends Component {
   }
 
   componentDidMount() {
-    let timeout = window.setTimeout(this.showMessage, 1000)
+    let timeout = window.setTimeout(this.loadingFailed, 1000)
     this.setState({
       timeout
     })
   }
 
-  showMessage = () => {
-    this.setState({
-      show:true
-    })
+  loadingFailed = () => {
+    return this.failed = true
   }
 
   render() {
     return(
       <div>
-        {this.state.show ? <h1>Error loading map</h1> : <h2>Content Loading</h2> }
+        {this.state.failed ?
+           <div>
+            <h1>Error Loading Map</h1>
+            <p>There was an error loading map. Please try again</p>
+           </div> :
+           <h2>Content Loading...</h2>
+        }
       </div>
     )
   }
