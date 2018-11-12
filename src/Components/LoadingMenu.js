@@ -18,7 +18,9 @@ class LoadApp extends Component {
   }
 
   loadingFailed = () => {
-    return this.failed = true
+    this.setState({
+      failed: true
+    })
   }
 
   render() {

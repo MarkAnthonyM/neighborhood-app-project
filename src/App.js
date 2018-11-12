@@ -41,8 +41,8 @@ class App extends Component {
       let bounds = new this.googleObject.LatLngBounds()
 
       //Icon marker colors
-      let defaultIcon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-      let mouseoverIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+      let defaultIcon = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+      let mouseoverIcon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
 
       //container for various makers
       this.venueMarkers = []
