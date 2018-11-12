@@ -5,11 +5,20 @@ A simple application that locates and supplies various details about restaurants
 
 ## Getting Started
 
-To get started:
+To get started using the app in a development env:
 
 * make sure both npm and node are installed on your system
+* download or clone the project to your local hard drive
 * install the necessary packages using the 'npm install' command in your terminal shell
 * start the application with the command 'npm start' in your terminal shell
+* access the application front-end from your browser on localhost:3000
+
+## Deployment
+To build a production version of the application:
+
+* run the command 'npm run build' in your terminal
+* a production ready version of the application will created and stored in the 'build' folder of your local repository
+* deploy the 'build' folder to your web server of choice to get live application up and running
 
 ## Built with
 
