@@ -17,8 +17,8 @@ To get started using the app in a development env:
 To build a production version of the application:
 
 * run the command 'npm run build' in your terminal
-* a production ready version of the application will created and stored in the 'build' folder of your local repository
-* deploy the 'build' folder to your web server of choice to get live application up and running
+* a production ready version of the application will be created and stored in the 'build' folder of your local repository
+* deploy the 'build' folder to your web server of choice to get the application up and running
 
 ## Built with
 
