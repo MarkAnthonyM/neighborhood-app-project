@@ -36,6 +36,7 @@ class App extends Component {
       //Variable that holds instance of InfoWindow
       this.largeInfoWindow = new this.googleObject.InfoWindow()
 
+      //bounding information
       let bounds = new this.googleObject.LatLngBounds()
 
       //Icon marker colors
@@ -44,6 +45,9 @@ class App extends Component {
 
       //container for various makers
       this.venueMarkers = []
+
+      //property for currently animating marker
+      this.animatedMarker = null
 
       //sets makers on map based on venue object data
       this.venues.forEach(venue => {
@@ -72,7 +76,8 @@ class App extends Component {
 
         //Sets eventlisteners to open infowindow on click of marker
         marker.addListener('click', () => {
-          this.setInfoWindow(marker, this.largeInfoWindow)
+          this.animatedMarker = marker
+          this.setInfoWindow(marker, this.largeInfoWindow, this.animatedMarker)
         })
 
         //Sets marker icon colors on mouseover action
@@ -111,15 +116,22 @@ class App extends Component {
   }
 
   //populates marker infowindow with varies details about venue
-  setInfoWindow = (marker, infowindow) => {
+  setInfoWindow = (marker, infowindow, animatingMarker) => {
     const { googleObject } = this
     //Checks maker for already opened infowindow
     if (infowindow.marker !== marker) {
       //Clear infowindow to setup for streetview
       infowindow.setContent('')
       infowindow.marker = marker
+      //checks for any currently animating markers
+      if (this.animatingMarker) {
+        this.animatingMarker.setAnimation(null)
+      }
+      this.animatingMarker = marker
+      marker.setAnimation(this.googleObject.Animation.BOUNCE)
       infowindow.addListener('closeclick', () => {
         infowindow.marker = null
+        marker.setAnimation(null)
       })
 
       let venueDetail = this.loadVenueDetails(marker)
