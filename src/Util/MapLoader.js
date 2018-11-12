@@ -31,7 +31,7 @@ export function loadMarkerPlaces() {
   }).catch(error => {console.log(error)})
 }
 
-//loads various details about venues
+//returns promise object from foursquare api with restaurant details
 export function loadVenueDetails(marker) {
   const clientId = 'ZWXMUFVA3FFI0ETOBLYUYUV0LM0DCHLXHYIKAAXKNYAVNFA3'
   const clientSecrect = 'Y0VDEZ5GP0BKEACCGOIFCTP2ULKVLA3KQF42RKZZ5YQ5MVT5'

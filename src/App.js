@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { load_google_maps, loadMarkerPlaces } from './Util/MapLoader'
+import { load_google_maps, loadMarkerPlaces, loadVenueDetails } from './Util/MapLoader'
 import Header from './Components/header'
 import NavMenu from './Components/nav-menu'
 import LoadApp from './Components/LoadingMenu'
@@ -105,18 +105,6 @@ class App extends Component {
     .catch(error => {console.log(error)})
   }
 
-  //returns promise object from foursquare api with restuarant details
-  loadVenueDetails(marker) {
-    const clientId = 'ZWXMUFVA3FFI0ETOBLYUYUV0LM0DCHLXHYIKAAXKNYAVNFA3'
-    const clientSecrect = 'Y0VDEZ5GP0BKEACCGOIFCTP2ULKVLA3KQF42RKZZ5YQ5MVT5'
-
-    let apiLink = `https://api.foursquare.com/v2/venues/${marker.id}?client_id=${clientId}&client_secret=${clientSecrect}&v=20181025`
-
-    return fetch(apiLink).then(response => {
-      return response.json()
-    }).catch(error => console.log(error))
-  }
-
   //populates marker infowindow with varies details about venue
   setInfoWindow = (marker, infowindow, animatingMarker) => {
     const { googleObject } = this
@@ -136,7 +124,7 @@ class App extends Component {
         marker.setAnimation(null)
       })
 
-      let venueDetail = this.loadVenueDetails(marker)
+      let venueDetail = loadVenueDetails(marker)
       Promise.all([
         venueDetail
       ]).then(response => {
@@ -159,6 +147,7 @@ class App extends Component {
             <div id='pano'></div>
             <p>Address: ${marker.location.formattedAddress[0]}, ${marker.location.formattedAddress[1]}</p>
             <p>Rating: ${venueDetail.rating}</p>
+            <figcaption>Data by <a href='https://developer.foursquare.com/'>FourSquare</a></figcaption>
             `
           )
           let panoramaOptions = {
