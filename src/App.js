@@ -212,8 +212,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header toggleNavMenu={this.toggleNavMenu}/>
-        <div>
-          {this.state.isLoading ? <div>Content Loading</div> : <NavMenu
+        <main>
+          {this.state.isLoading ? <h2>Content Loading</h2> : <NavMenu
             largeInfoWindow={this.largeInfoWindow}
             query={this.state.query}
             markers={this.state.filteredMarkers}
@@ -221,7 +221,7 @@ class App extends Component {
             setInfoWindow={this.setInfoWindow}
           />}
           <Map />
-        </div>
+        </main>
       </div>
     );
   }

@@ -6,7 +6,7 @@ class navMenu extends Component {
 
     return (
       <div id='nav' className='nav-bar nav-close'>
-        <h3>Filter By Location</h3>
+        <h3 tabIndex='0'>Filter By Location</h3>
         <input
           className='filter-box'
           type='text'
