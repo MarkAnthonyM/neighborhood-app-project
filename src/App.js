@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { load_google_maps, loadMarkerPlaces } from './Util/MapLoader'
+import Header from './Components/header'
 import NavMenu from './Components/nav-menu'
+import Map from './Components/map'
 import './App.css';
 
 class App extends Component {
@@ -197,10 +199,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className='header'>
-          <h1>Neighborhood Restuarant Map</h1>
-          <img onClick={() => { this.toggleNavMenu() }} className="hamburger-icon" src="https://img.icons8.com/material-rounded/100/000000/menu.png" alt='Nav icon'></img>
-        </div>
+        <Header toggleNavMenu={this.toggleNavMenu}/>
         <div>
           {this.state.isLoading ? <div>Content Loading</div> : <NavMenu
             largeInfoWindow={this.largeInfoWindow}
@@ -209,7 +208,7 @@ class App extends Component {
             filterMarkers={this.filterMarkers}
             setInfoWindow={this.setInfoWindow}
           />}
-          <div id="map"></div>
+          <Map />
         </div>
       </div>
     );
