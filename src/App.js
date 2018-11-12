@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { load_google_maps, loadMarkerPlaces } from './Util/MapLoader'
 import Header from './Components/header'
 import NavMenu from './Components/nav-menu'
+import LoadApp from './Components/LoadingMenu'
 import Map from './Components/map'
 import './App.css';
 
@@ -213,7 +214,7 @@ class App extends Component {
       <div className="App">
         <Header toggleNavMenu={this.toggleNavMenu}/>
         <main>
-          {this.state.isLoading ? <h2>Content Loading</h2> : <NavMenu
+          {this.state.isLoading ? <LoadApp/> : <NavMenu
             largeInfoWindow={this.largeInfoWindow}
             query={this.state.query}
             markers={this.state.filteredMarkers}

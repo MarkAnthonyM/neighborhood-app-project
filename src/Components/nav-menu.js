@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class navMenu extends Component {
+class NavMenu extends Component {
   render() {
     const { filterMarkers, markers, query, setInfoWindow, largeInfoWindow } = this.props
 
@@ -28,4 +28,4 @@ class navMenu extends Component {
   }
 }
 
-export default navMenu;
+export default NavMenu;
