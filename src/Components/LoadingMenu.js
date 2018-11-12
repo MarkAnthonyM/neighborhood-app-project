@@ -28,8 +28,8 @@ class LoadApp extends Component {
       <div>
         {this.state.failed ?
            <div>
-            <h1>Error Loading Map</h1>
-            <p>There was an error loading map. Please try again</p>
+            <h1 tabIndex='0'>Error Loading Map</h1>
+            <p tabIndex='0'>There was an error loading map. Please try again</p>
            </div> :
            <h2>Content Loading...</h2>
         }

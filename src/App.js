@@ -198,15 +198,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header toggleNavMenu={this.toggleNavMenu}/>
         <main>
-          {this.state.isLoading ? <LoadApp/> : <NavMenu
-            largeInfoWindow={this.largeInfoWindow}
-            query={this.state.query}
-            markers={this.state.filteredMarkers}
-            filterMarkers={this.filterMarkers}
-            setInfoWindow={this.setInfoWindow}
-          />}
+          {this.state.isLoading ? <LoadApp/> :
+            <React.Fragment>
+              <NavMenu
+                largeInfoWindow={this.largeInfoWindow}
+                query={this.state.query}
+                markers={this.state.filteredMarkers}
+                filterMarkers={this.filterMarkers}
+                setInfoWindow={this.setInfoWindow}
+              />
+              <Header toggleNavMenu={this.toggleNavMenu}/>
+            </React.Fragment>}
           <Map />
         </main>
       </div>
