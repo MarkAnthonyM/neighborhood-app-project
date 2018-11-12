@@ -6,10 +6,14 @@ import './App.css';
 class App extends Component {
 
   state = {
-    query: ''
+    query: '',
+    isLoading: true,
+    filteredMarkers: [],
+    toggle: false
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    //stores promise returning utility functions
     let mapPromise = load_google_maps()
     let markerPromise = loadMarkerPlaces();
 
@@ -28,7 +32,7 @@ class App extends Component {
       })
 
       //Variable that holds instance of InfoWindow
-      let largeInfoWindow = new this.googleObject.InfoWindow()
+      this.largeInfoWindow = new this.googleObject.InfoWindow()
 
       let bounds = new this.googleObject.LatLngBounds()
 
@@ -66,7 +70,7 @@ class App extends Component {
 
         //Sets eventlisteners to open infowindow on click of marker
         marker.addListener('click', () => {
-          this.setInfoWindow(marker, largeInfoWindow)
+          this.setInfoWindow(marker, this.largeInfoWindow)
         })
 
         //Sets marker icon colors on mouseover action
@@ -82,10 +86,17 @@ class App extends Component {
 
       //sets map to fit size to new bounds
       this.map.fitBounds(bounds)
+
+      //Changes loading state after async calls done and initializes filteredMarkers state
+      this.setState({
+        isLoading: false,
+        filteredMarkers: this.venueMarkers
+      })
     })
     .catch(error => {console.log(error)})
   }
 
+  //returns promise object from foursquare api with restuarant details
   loadVenueDetails(marker) {
     const clientId = 'ZWXMUFVA3FFI0ETOBLYUYUV0LM0DCHLXHYIKAAXKNYAVNFA3'
     const clientSecrect = 'Y0VDEZ5GP0BKEACCGOIFCTP2ULKVLA3KQF42RKZZ5YQ5MVT5'
@@ -123,6 +134,7 @@ class App extends Component {
       let streetViewService = new googleObject.StreetViewService()
       let radius = 50
 
+      //loads streetview into infowindow if applicable
       function getStreetView(data, status) {
         if (status === googleObject.StreetViewStatus.OK) {
           let nearStreetView = data.location.latLng
@@ -158,35 +170,47 @@ class App extends Component {
     }
   }
 
-  //updates the query state
-  updateQuery(query) {
-    this.setState({
-      query: query
-    })
-  }
-
-  //filters out makers based string in query state
+  //filters visible makers based string in query state
   filterMarkers = (query) => {
+    this.filterContainer = []
     this.venueMarkers.forEach(marker => {
       if (marker.title.toLowerCase().includes(query.toLowerCase())) {
         marker.setVisible(true)
+        this.filterContainer.push(marker)
       } else {
         marker.setVisible(false)
       }
     })
 
-    this.updateQuery(query)
+    this.setState({
+      query: query,
+      filteredMarkers: this.filterContainer
+    })
+  }
+
+  //toggles side-bar
+  toggleNavMenu(){
+    const navMenu = document.getElementById('nav')
+    navMenu.classList.toggle('nav-open')
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Hello World!</h1>
-        <NavMenu
-          query={this.state.query}
-          filterMarkers={this.filterMarkers}
-        />
-        <div id="map"></div>
+        <div className='header'>
+          <h1>Neighborhood Restuarant Map</h1>
+          <img onClick={() => { this.toggleNavMenu() }} className="hamburger-icon" src="https://img.icons8.com/material-rounded/100/000000/menu.png" alt='Nav icon'></img>
+        </div>
+        <div>
+          {this.state.isLoading ? <div>Content Loading</div> : <NavMenu
+            largeInfoWindow={this.largeInfoWindow}
+            query={this.state.query}
+            markers={this.state.filteredMarkers}
+            filterMarkers={this.filterMarkers}
+            setInfoWindow={this.setInfoWindow}
+          />}
+          <div id="map"></div>
+        </div>
       </div>
     );
   }
