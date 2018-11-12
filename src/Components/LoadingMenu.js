@@ -6,7 +6,7 @@ class LoadApp extends Component {
     failed: false
   }
 
-  componentWillMount(){
+  componentWillUnmount(){
     window.clearTimeout(this.state.timeout)
   }
 

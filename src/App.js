@@ -5,6 +5,7 @@ import NavMenu from './Components/nav-menu'
 import LoadApp from './Components/LoadingMenu'
 import Map from './Components/map'
 import './App.css';
+import './responsive.css'
 
 class App extends Component {
 
@@ -141,10 +142,6 @@ class App extends Component {
       ]).then(response => {
         this.venueDetails = response[0].response.venue
       })
-
-      // venueDetail.then(response => {
-      //   console.log(response)
-      // })
 
       let streetViewService = new googleObject.StreetViewService()
       let radius = 50
