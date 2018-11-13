@@ -1,3 +1,5 @@
+//Adapted from example provided by Doug Brown in his webinar (https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be)
+
 import React, { Component } from 'react'
 
 class LoadApp extends Component {
