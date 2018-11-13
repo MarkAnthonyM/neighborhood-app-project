@@ -1,3 +1,6 @@
+//Helper functions sourced and adapted from https://github.com/ryanwaite28/script-store/blob/master/js/react_resolve_google_maps.js with explicit permission from Ryan Waite (https://youtu.be/5J6fs_BlVC0?t=1211 at timestamp: 20:11)
+//and from udacity additional resources instruction's provided link: https://stackoverflow.com/questions/48493960/using-google-map-in-react-component  
+
 //Loads the google maps api and returns it as an object
 export function load_google_maps() {
   return new Promise(function(resolve, reject) {
