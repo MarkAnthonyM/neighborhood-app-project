@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/neighborhood-app-project/static/js/runtime~main.ff919053.js"
   },
   {
-    "revision": "96733a873eb4da0ae32a",
-    "url": "/neighborhood-app-project/static/js/main.96733a87.chunk.js"
+    "revision": "72069163abcd02f48c5b",
+    "url": "/neighborhood-app-project/static/js/main.72069163.chunk.js"
   },
   {
     "revision": "549149764a4abda863bc",
     "url": "/neighborhood-app-project/static/js/1.54914976.chunk.js"
   },
   {
-    "revision": "96733a873eb4da0ae32a",
+    "revision": "72069163abcd02f48c5b",
     "url": "/neighborhood-app-project/static/css/main.284300a7.chunk.css"
   },
   {
-    "revision": "7129f22260b500f7468b1525bc723275",
+    "revision": "2b221f676e9ceaf6b6f7222fc03b1cbd",
     "url": "/neighborhood-app-project/index.html"
   }
 ];
