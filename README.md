@@ -30,7 +30,7 @@ To build a production version of the application:
 ### Doug Brown
 * walkthru - https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be
 ### Ryan Waite
-* script - https://youtu.be/5J6fs_BlVC0?t=1211 (explicit permission given at timestamp 20:11)
+* google map api script - https://youtu.be/5J6fs_BlVC0?t=1211 (explicit permission given at timestamp 20:11)
 ### Udacity/Stack Overflow
 * Using google maps in react - https://stackoverflow.com/questions/48493960/using-google-map-in-react-component
 
